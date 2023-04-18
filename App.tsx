@@ -13,12 +13,15 @@ import {
   View,
 } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
+import BuyCoffee from './BuyCoffee';
+import { trustWallet, TrustWallet } from '@thirdweb-dev/react-native/dist/evm/wallets/wallets/trust-wallet';
+import RecentMessages from './RecentMessages';
 
 const App = () => {
   return (
     <ThirdwebProvider
-      activeChain="mumbai"
-      supportedWallets={[metamaskWallet(), rainbowWallet()]}>
+      activeChain="goerli"
+      supportedWallets={[metamaskWallet()]}>
       <AppInner />
     </ThirdwebProvider>
   );
@@ -38,8 +41,11 @@ const AppInner = () => {
   return (
     <SafeAreaView style={backgroundStyle}>
       <View style={styles.view}>
-        <Text style={textStyles}>React Native thirdweb starter</Text>
         <ConnectWallet />
+        <BuyCoffee/>
+      </View>
+      <View style={styles.view}>
+        <RecentMessages/>
       </View>
     </SafeAreaView>
   );
@@ -47,7 +53,7 @@ const AppInner = () => {
 
 const styles = StyleSheet.create({
   view: {
-    height: '100%',
+    height: '50%',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
